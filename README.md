@@ -1,26 +1,31 @@
-Background and Overview
-This project focuses on fraud detection using machine learning techniques. The objective is to develop models that can accurately identify fraudulent transactions within financial datasets. The problem is critical in industries such as banking and e-commerce, where timely detection of fraud can save significant financial losses. By leveraging a public dataset from Kaggle’s Bank Account Fraud Dataset Suite (NeurIPS 2022), this project applies multiple machine learning models, evaluates their performance using the AUC-ROC metric, and explores ensemble methods to boost detection accuracy.
+# Capstone Project: Fraud Detection with Machine Learning
+Christopher Tan  
+Western Governors University  
 
-Data Structure Overview
-The dataset contains transactional data related to bank account activity, divided into labeled (fraud vs. non-fraud) and unlabeled categories. It is highly imbalanced, with fraud cases constituting a small percentage of the total records. Key features include:
+## Background and Overview
+This project aims to identify fraudulent transactions in bank accounts using machine learning. Four models were evaluated—**Logistic Regression, Random Forest, Neural Networks**, and **XGBoost**—using Kaggle’s **Bank Account Fraud Dataset Suite (NeurIPS 2022)**. The dataset has 1 million records and 32 features, making it suitable for training and testing. The **AUC-ROC** metric was the primary evaluation criterion, and ensemble methods were applied to improve model accuracy.
 
-Transaction ID: Unique identifier for each transaction.
-Transaction Amount: Monetary value of the transaction.
-Transaction Date/Time: Temporal details used for feature engineering.
-Merchant Information: Categorical data on where the transaction occurred.
-Fraud Label: Binary target variable (1 for fraud, 0 for non-fraud).
-Executive Summary
-The project explored four machine learning models: Logistic Regression, Random Forest, Neural Networks, and XGBoost. After hyperparameter tuning and model evaluation, the following results were achieved:
+## Data Structure Overview
+The dataset includes:
+- **Transaction ID**: Unique identifier.
+- **Transaction Amount**: The monetary value of transactions.
+- **Date/Time**: Temporal details used for splitting data into training (months 0-5) and testing (months 6-7).
+- **Fraud Label**: Binary target variable (1 for fraud, 0 for non-fraud).
+  
+Data preprocessing included handling missing values and encoding categorical variables with one-hot encoding. Temporal splitting ensured real-world applicability.
 
-Logistic Regression AUC: 0.8719
-Random Forest AUC: 0.8887
-Neural Network AUC: 0.8793
-XGBoost AUC: 0.8897
-To further improve performance, an ensemble method using weighted averaging was implemented, resulting in an AUC of 0.8945, demonstrating a slight but meaningful improvement.
+## Executive Summary
+After extensive data preparation and hyperparameter tuning, the models achieved the following AUC scores:
+- **Logistic Regression**: 0.8719
+- **Random Forest**: 0.8887
+- **Neural Networks**: 0.8793
+- **XGBoost**: 0.8897
 
-Insights Deep Dive
-Imbalanced Data Handling: Since the dataset is highly imbalanced, techniques like oversampling and class weighting were applied to enhance model sensitivity to fraudulent cases.
-Feature Engineering: Temporal features, such as transaction time of day, played a crucial role in distinguishing fraudulent activities.
-Model Comparisons: XGBoost and Random Forest consistently outperformed Logistic Regression and Neural Networks, largely due to their ability to handle complex, non-linear relationships in the data.
-Ensemble Strategy: The ensemble approach, particularly weighted averaging, proved effective in combining the strengths of different models, leading to higher AUC scores.
-This project showcases the potential of machine learning for fraud detection, emphasizing the importance of data preprocessing, feature selection, and model selection in achieving robust results.
+Ensemble methods like **Simple Averaging** and **Weighted Voting** improved AUC to **0.8945**, demonstrating the potential of combining models to enhance fraud detection accuracy.
+
+## Insights Deep Dive
+1. **Model Comparisons**: XGBoost consistently outperformed other models, but Random Forest improved significantly with hyperparameter tuning.
+2. **Feature Importance**: Key features driving fraud predictions include **housing status**, **credit risk score**, and **device operating system**.
+3. **Ensemble Methods**: Combining models (simple averaging/weighted voting) achieved the highest AUC, showing the value of diverse model aggregation.
+
+This project highlights the strengths of each model and the effectiveness of ensemble methods in improving fraud detection.
